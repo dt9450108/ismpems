@@ -1,0 +1,18 @@
+<?php
+require_once __DIR__ . "/php/system.config.php";
+echo json_encode([
+    "SERVER" => ISMPEMS_SERVER,
+    "API" => ISMPEMS_SERVER_API,
+    "DEBUG" => ISMPEMS_DEBUG_ENABLE,
+    "SESSION_TIMEOUT" => SESSION_TIMEOUT,
+    "ISMPEMS_CODE" => [
+        "OK" => ISMPEMS_CODE_OK,
+        "NO_CONTENT" => ISMPEMS_CODE_NO_CONTENT,
+        "BAD_REQUEST" => ISMPEMS_CODE_BAD_REQUEST,
+        "NOT_FOUND" => ISMPEMS_CODE_NOT_FOUND,
+        "SERVER_ERROR" => ISMPEMS_CODE_SERVER_ERROR,
+        "NO_API" => ISMPEMS_CODE_NO_API,
+        "UNKNOWN_ERROR" => ISMPEMS_CODE_UNKNOWN_ERROR,
+        "NOT_MODIFIED" => ISMPEMS_CODE_NOT_MODIFIED,
+    ],
+], true);

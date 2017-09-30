@@ -1,0 +1,93 @@
+---
+layout: app/app-layout
+pagename: repair-adder
+---
+<div class="title-block">
+	<h3 class="title">
+		送修設備
+	</h3>
+</div>
+<form id="repair-adder-form-query" name="repair-adder-form-query">
+	<div class="card card-block">
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>設備種類
+			</label>
+			<div class="col-sm-5">
+				<input type="text" id="repair-adder-device-type" class="form-control boxed" placeholder="" maxlength="3" pattern="[A-Z]{3}"
+				required>
+			</div>
+			<div class="col-sm-5">
+				<select id="repair-adder-device-type-select" class="c-select form-control boxed">
+					<option value="">選擇種類</option>
+				</select>
+		        <span class="help-block">手動輸入或選擇種類，格式：3個大寫英文字母</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>設備編號
+			</label>
+			<div class="col-sm-10">
+				<input id="repair-device-num" type="text" class="form-control boxed" maxlength="4" pattern="[0-9]{4}" placeholder="ex. 0001" required>
+				<span class="help-block">範例：0001，預設為該種類最後一個編號+1</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary btn-block">
+					查詢
+				</button>
+			</div>
+		</div>
+	</div>
+</form>
+<form id="repair-adder-form" name="repair-adder-form">
+	<div class="card card-block">
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				設備狀態
+			</label>
+			<div class="col-sm-10">
+				<input id="repair-device-status" type="text" class="form-control boxed" placeholder="" readonly="readonly">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				送修前設備位置
+			</label>
+			<div class="col-sm-10">
+				<input id="repair-device-location" type="text" class="form-control boxed" placeholder="" readonly="readonly">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>送修日期時間
+			</label>
+			<div class="col-sm-10">
+				<input id="repair-datetime" type="text" class="form-control boxed" placeholder="YYYY-MM-DD HH:mm" style="background-color: #fff;" required>
+				<span class="help-block">格式：2017-01-01 13:50</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>備註
+			</label>
+			<div class="col-sm-10">
+				<textarea id="repair-memo" rows="5" class="form-control" style="resize: none;" required></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<p id="editor-last-modified-datetime" class="text-right"><p>
+			</div>
+			<div class="col-sm-2">
+				<button id="submit-button" type="submit" class="btn btn-primary btn-block">
+					完成
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

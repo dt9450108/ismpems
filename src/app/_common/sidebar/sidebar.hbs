@@ -1,0 +1,342 @@
+<aside class="sidebar">
+	<div class="sidebar-container">
+		{{> app/_common/sidebar/header/header}}
+		<nav class="menu">
+			<ul class="sidebar-menu metismenu" id="sidebar-menu">
+				<li {{#is pagename "===" "dashboard"}}class="active"{{/is}} >
+					<a href="index.html">
+						<i class="fa fa-home"></i> Dashboard
+					</a>
+				</li>
+
+				<li {{#is pagename "in" "items-list,item-adder,item-editor"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-desktop"></i> 設備管理
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "items-list"}}class="active"{{/is}} >
+							<a href="items-list.html">
+								<i class="fa fa-table"></i> 查詢設備
+							</a>
+						</li>
+						<li {{#is pagename "===" "item-adder"}}class="active"{{/is}} >
+							<a href="item-adder.html">
+								<i class="fa fa-plus"></i> 新增設備
+							</a>
+						</li>
+						<li {{#is pagename "===" "item-editor"}}class="active"{{/is}} >
+							<a href="item-editor.html">
+								<i class="fa fa-pencil-square-o"></i> 編輯設備
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				<li {{#is pagename "in" "lend-list,lend-adder,lend-return"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-file-text-o"></i> 設備借用
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "lend-list"}}class="active"{{/is}} >
+							<a href="lend-list.html">
+								<i class="fa fa-table"></i> 借用記錄
+							</a>
+						</li>
+						<li {{#is pagename "===" "lend-adder"}}class="active"{{/is}} >
+							<a href="lend-adder.html">
+								<i class="fa fa-hand-o-left"></i> 出借設備
+							</a>
+						</li>
+						<li {{#is pagename "===" "lend-return"}}class="active"{{/is}} >
+							<a href="lend-return.html">
+								<i class="fa fa-hand-o-right"></i> 歸還設備
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				<li {{#is pagename "in" "repair-adder,repair-return,repair-list"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-wrench"></i> 設備維修
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "repair-list"}}class="active"{{/is}} >
+							<a href="repair-list.html">
+								<i class="fa fa-table"></i> 查詢送修設備記錄
+							</a>
+						</li>
+						<li {{#is pagename "===" "repair-adder"}}class="active"{{/is}} >
+							<a href="repair-adder.html">
+								<i class="fa fa-ambulance"></i> 送修設備
+							</a>
+						</li>
+						<li {{#is pagename "===" "repair-return"}}class="active"{{/is}} >
+							<a href="repair-return.html">
+								<i class="fa fa-archive"></i> 歸還設備
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				<li {{#is pagename "in" "members-list,member-adder,member-editor"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-address-book"></i> 借用人管理
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "members-list"}}class="active"{{/is}} >
+							<a href="members-list.html">
+								<i class="fa fa-table"></i> 查詢借用人
+							</a>
+						</li>
+						<li {{#is pagename "===" "member-adder"}}class="active"{{/is}} >
+							<a href="member-adder.html">
+								<i class="fa fa-plus"></i> 新增借用人
+							</a>
+						</li>
+						<li {{#is pagename "===" "member-editor"}}class="active"{{/is}} >
+							<a href="member-editor.html">
+								<i class="fa fa-pencil-square-o"></i> 編輯借用人
+							</a>
+						</li>
+					</ul>
+				</li>
+
+					<?php require_once "php/system.config.php";
+					if ($_SESSION['ismpems_au'] == ISMPEMS_ADMIN) {
+				echo '<li {{#is pagename "in" "system-devices-types,system-devices-status,system-users-list,system-user-editor,system-user-adder"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-cog"></i> 系統管理
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "system-users-list"}}class="active"{{/is}} >
+							<a href="system-users-list.html">
+								<i class="fa fa-users"></i> 查詢系統使用者
+							</a>
+						</li>
+						<li {{#is pagename "===" "system-user-adder"}}class="active"{{/is}} >
+							<a href="system-user-adder.html">
+								<i class="fa fa-user-plus"></i> 新增系統使用者
+							</a>
+						</li>
+						<li {{#is pagename "===" "system-user-editor"}}class="active"{{/is}} >
+							<a href="system-user-editor.html">
+								<i class="fa fa-pencil-square-o"></i> 編輯系統使用者
+							</a>
+						</li>
+						<li {{#is pagename "===" "system-devices-types"}}class="active"{{/is}} >
+							<a href="system-devices-types.html">
+								<i class="fa fa-pencil-square-o"></i> 編輯設備種類表
+							</a>
+						</li>
+						<li {{#is pagename "===" "system-devices-status"}}class="active"{{/is}} >
+							<a href="system-devices-status.html">
+								<i class="fa fa-pencil-square-o"></i> 編輯設備狀態表
+							</a>
+						</li>
+					</ul>
+				</li>' ;
+					} ?>
+				{{!-- <li {{#is pagename "in" "charts-flot,charts-morris"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-bar-chart"></i> Charts
+						<i class="fa arrow"></i>
+					</a>
+
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "charts-flot"}}class="active"{{/is}} >
+							<a href="charts-flot.html">
+								Flot Charts
+							</a>
+						</li>
+
+						<li {{#is pagename "===" "charts-morris"}}class="active"{{/is}} >
+							<a href="charts-morris.html">
+								Morris Charts
+							</a>
+						</li>
+					</ul>
+				</li> --}}
+				{{!-- <li {{#is pagename "in" "static-tables,responsive-tables"}}class="active open"{{/is}} >
+					<a href="">
+						<i class="fa fa-table"></i> Tables
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "static-tables"}}class="active"{{/is}} >
+							<a href="static-tables.html">
+								Static Tables
+							</a>
+						</li>
+						<li {{#is pagename "===" "responsive-tables"}}class="active"{{/is}} >
+							<a href="responsive-tables.html">
+								Responsive Tables
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li {{#is pagename "===" "forms"}}class="active"{{/is}} >
+					<a href="forms.html">
+						<i class="fa fa-pencil-square-o"></i> Forms
+					</a>
+				</li>
+				<li {{#is pagename "in" "buttons,grid,icons,cards,typography"}}	class="active open"	{{/is}} >
+					<a href="">
+						<i class="fa fa-desktop"></i> UI Elements
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "buttons"}}class="active"{{/is}}>
+							<a href="buttons.html">
+								Buttons
+							</a>
+						</li>
+						<li {{#is pagename "===" "cards"}}class="active"{{/is}}>
+							<a href="cards.html">
+								Cards
+							</a>
+						</li>
+						<li {{#is pagename "===" "typography"}}class="active"{{/is}}>
+							<a href="typography.html">
+								Typography
+							</a>
+						</li>
+						<li {{#is pagename "===" "icons"}}class="active"{{/is}}>
+							<a href="icons.html">
+								Icons
+							</a>
+						</li>
+						<li {{#is pagename "===" "grid"}}class="active"{{/is}}>
+							<a href="grid.html">
+								Grid
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li {{#is pagename "in" "login,signup,reset,error-404,error-500"}} class="active open" {{/is}} >
+					<a href="">
+						<i class="fa fa-file-text-o"></i> Pages
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li {{#is pagename "===" "login"}}class="active"{{/is}}>
+							<a href="login.html">
+								Login
+							</a>
+						</li>
+						<li {{#is pagename "===" "signup"}}class="active"{{/is}}>
+							<a href="signup.html">
+								Sign Up
+							</a>
+						</li>
+						<li {{#is pagename "===" "reset"}}class="active"{{/is}}>
+							<a href="reset.html">
+								Reset
+							</a>
+						</li>
+						<li {{#is pagename "===" "error-404"}}class="active"{{/is}}>
+							<a href="error-404.html">
+								Error 404 App
+							</a>
+						</li>
+						<li {{#is pagename "===" "error-404-alt"}}class="active"{{/is}}>
+							<a href="error-404-alt.html">
+								Error 404 Global
+							</a>
+						</li>
+						<li {{#is pagename "===" "error-500"}}class="active"{{/is}}>
+							<a href="error-500.html">
+								Error 500 App
+							</a>
+						</li>
+						<li {{#is pagename "===" "error-500-alt"}}class="active"{{/is}}>
+							<a href="error-500-alt.html">
+								Error 500 Global
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="">
+						<i class="fa fa-sitemap"></i> Menu Levels
+						<i class="fa arrow"></i>
+					</a>
+					<ul class="sidebar-nav">
+						<li>
+							<a href="#">
+								Second Level Item
+								<i class="fa arrow"></i>
+							</a>
+							<ul class="sidebar-nav">
+								<li>
+									<a href="#">
+										Third Level Item
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Third Level Item
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								Second Level Item
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								Second Level Item
+								<i class="fa arrow"></i>
+							</a>
+							<ul class="sidebar-nav">
+								<li>
+									<a href="#">
+										Third Level Item
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Third Level Item
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Third Level Item
+										<i class="fa arrow"></i>
+									</a>
+									<ul class="sidebar-nav">
+										<li>
+											<a href="#">
+												Fourth Level Item
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												Fourth Level Item
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+				<li {{#is pagename "===" "docs"}}class="active"{{/is}} >
+					<a href="https://github.com/modularcode/modular-admin-html">
+						<i class="fa fa-github-alt"></i> Theme Docs
+					</a>
+				</li> --}}
+			</ul>
+		</nav>
+	</div>
+	{{> app/_common/sidebar/customize/customize}}
+</aside>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>

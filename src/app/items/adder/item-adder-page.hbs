@@ -1,0 +1,194 @@
+---
+layout: app/app-layout
+pagename: item-adder
+device_duration:
+   - code: 1
+   - code: 2
+   - code: 3
+   - code: 4
+   - code: 5
+   - code: 6
+   - code: 7
+   - code: 8
+   - code: 9
+   - code: 10
+---
+<div class="title-block">
+	<h3 class="title">
+		新增設備
+	</h3>
+</div>
+<form id="device-adder-form" name="device-adder-form">
+	<div class="card card-block">
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>設備種類
+			</label>
+			<div class="col-sm-10">
+				<select id="device-type-select" class="c-select form-control boxed" required>
+					<option value="">選擇種類</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>設備編號
+			</label>
+			<div class="col-sm-10">
+				<input id="device-num" type="text" maxlength="4" pattern="[0-9]{4}" class="form-control boxed" placeholder="ex. 0001" autocomplete="off" required>
+				<span id="device-num-help" class="help-block">範例：0001，預設為該種類最後一個編號+1</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>設備名稱
+			</label>
+			<div class="col-sm-10">
+				<input id="device-name" type="text" class="form-control boxed" placeholder="" autocomplete="off" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>存放地點
+			</label>
+			<div class="col-sm-5">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary" id="lab-device-location-layout" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+					</span>
+					<input id="device-location" type="text" class="form-control boxed" placeholder="" autocomplete="off" required>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<select id="device-location-select" class="c-select form-control boxed">
+					<option value="">選擇地點</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				設備品牌
+			</label>
+			<div class="col-sm-10">
+				<input id="device-brand" type="text" class="form-control boxed" placeholder="">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				設備裝置序號
+			</label>
+			<div class="col-sm-10">
+				<input id="device-serial-num" type="text" class="form-control boxed" placeholder="">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				設備狀態
+			</label>
+			<div class="col-sm-10">
+				<select id="device-status-select" class="c-select form-control boxed">
+					<option value="">選擇狀態</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				學校財產編號
+			</label>
+			<div class="col-sm-10">
+				<input id="device-ncku-property-num" type="text" class="form-control boxed" placeholder="">
+				<span class="help-block">範例：3100506-09</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				學校財產校碼
+			</label>
+			<div class="col-sm-10">
+				<input id="device-ncku-num" type="text" class="form-control boxed" placeholder="">
+				<span class="help-block">範例：B97</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				學校財產序號
+			</label>
+			<div class="col-sm-10">
+				<input id="device-ncku-serial-num" type="text" class="form-control boxed" placeholder="">
+				<span class="help-block">範例：1271</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				學校財產費別名
+			</label>
+			<div class="col-sm-10">
+				<input id="device-ncku-price-name" type="text" class="form-control boxed" placeholder="">
+				<span class="help-block">範例：校務基金</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				使用年限
+			</label>
+			<div class="col-sm-10">
+				<select id="device-duration" class="c-select form-control boxed">
+					<option value="">選擇使用年限</option>
+					{{#each device_duration}}
+						<option value="{{this.code}}">{{this.code}} 年</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				購入廠商名稱
+			</label>
+			<div class="col-sm-10">
+				<input id="device-buy-from" type="text" class="form-control boxed" placeholder="">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				價格
+			</label>
+			<div class="col-sm-10">
+				<input id="device-price" type="text" class="form-control boxed" placeholder="">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				購買日期
+			</label>
+			<div class="col-sm-10">
+				<input id="device-buy-date" type="text" class="form-control boxed" placeholder="YYYY-MM-DD" style="background-color: #fff;">
+				<span class="help-block">格式：2017-01-01</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				財產規格
+			</label>
+			<div class="col-sm-10">
+				<textarea id="device-spec" rows="5" class="form-control" style="resize: none;"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				備註
+			</label>
+			<div class="col-sm-10">
+				<textarea id="device-memo" rows="5" class="form-control" style="resize: none;"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" id="btn-device-add" class="btn btn-primary btn-block">
+					新增
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

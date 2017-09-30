@@ -1,0 +1,51 @@
+---
+layout: auth/auth-layout
+themeTitle: ISMP EMS
+---
+<div class="auth-container">
+	<div class="card">
+		<header class="auth-header">
+			<h1 class="auth-title">
+				{{> _common/logo/logo}}
+				{{themeTitle}}
+			</h1>
+		</header>
+		<div class="auth-content">
+			<p class="text-center">註冊帳號</p>
+			<form id="signup-form" novalidate="">
+				<div class="form-group">
+					<label for="useraccount">帳號</label>
+					<input type="text" class="form-control underlined" name="useraccount" id="user-account" placeholder="Enter your account" required="">
+				</div>
+				<div class="form-group">
+					<label for="password">密碼</label>
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="password" class="form-control underlined" name="password" id="user-password"
+									placeholder="Enter password" required="">
+						</div>
+						<div class="col-sm-6">
+							<input type="password" class="form-control underlined" name="retype_password" id="retype_password"
+								placeholder="Re-type password" required="">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="username">姓名</label>
+						<input type="text" class="form-control underlined" name="username" id="user-name" placeholder="Enter your name" required="">
+				</div>
+				<div class="form-group">
+					<label for="email" >Email</label>
+					<input type="email" class="form-control underlined" name="email" id="user-email" placeholder="Enter email address" required="">
+				</div>
+				<div class="form-group">
+					<button id="signup-form-btn" type="submit" class="btn btn-block btn-primary">註冊</button>
+				</div>
+				<div class="form-group">
+					<p class="text-muted text-center">已經有帳號了? <a href="login.html">登入!</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{{> app/_common/modals/modal-alert/modal-alert}}

@@ -1,0 +1,39 @@
+---
+layout: auth/auth-layout
+themeTitle: ISMP EMS
+---
+<div class="auth-container">
+	<div class="card">
+		<header class="auth-header">
+			<h1 class="auth-title">
+				{{> _common/logo/logo}}
+				{{themeTitle}}
+			</h1>
+		</header>
+		<div class="auth-content">
+			<p class="text-center">登入</p>
+			<form id="login-form" novalidate="">
+				<div class="form-group">
+					<label for="useraccount">帳號</label>
+					<input type="text" class="form-control underlined" name="useraccount" id="useraccount" placeholder="Your account" required>
+				</div>
+				<div class="form-group">
+					<label for="password">密碼</label>
+					<input type="password" class="form-control underlined" name="password" id="password" placeholder="Your password" required>
+				</div>
+				{{!-- <div class="form-group">
+					<label for="remember">
+						<input class="checkbox" id="remember" type="checkbox">
+						<span>記住我</span>
+					</label>
+				</div> --}}
+				<div class="form-group">
+					<button type="submit" class="btn btn-block btn-primary">登入</button>
+				</div>
+				<div class="form-group">
+					<p class="text-muted text-center">還有帳號嗎? <a href="signup.html">註冊!</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

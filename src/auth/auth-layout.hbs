@@ -1,0 +1,17 @@
+---
+layout: _main-layout
+---
+<?php
+require_once "php/system.config.php";
+require_once "php/ismpems_session.php";
+start_session(SESSION_TIMEOUT * 1000);
+
+// login page
+if (isset($_SESSION['ismpems_ac']) && isset($_SESSION['ismpems_na']) && isset($_SESSION['ismpems_em']) && isset($_SESSION['ismpems_au'])) {
+	header("Location: index.html");
+}
+?>
+<div class="auth">
+	{{{body}}}
+</div>
+{{> app/_common/modals/modal-alert/modal-alert}}

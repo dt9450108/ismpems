@@ -1,0 +1,36 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="device-status-modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 id="ds-title" class="modal-title">新增裝置狀態</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div id="ds-body" class="modal-body">
+				<div id="device-status-id-field" class="form-group row">
+					<label class="col-sm-3 form-control-label text-xs-right">
+						<span style="color: red;">*</span>ID編號
+					</label>
+					<div class="col-sm-9">
+						<input id="device-status-id" type="text" class="form-control boxed" placeholder="" readonly="readonly">
+						<span id="device-status-id-msg" class="help-block" style="color: #F44336;"></span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 form-control-label text-xs-right">
+						<span style="color: red;">*</span>狀態說明
+					</label>
+					<div class="col-sm-9">
+						<input id="device-status-text" type="text" class="form-control boxed" placeholder="" required>
+						<span id="device-status-text-msg" class="help-block" style="color: #F44336;"></span>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="submit-button" type="button" class="btn btn-primary">新增</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

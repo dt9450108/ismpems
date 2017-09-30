@@ -1,0 +1,48 @@
+---
+layout: app/app-layout
+pagename: member-adder
+---
+<div class="title-block">
+	<h3 class="title">
+		新增借用人
+		<span class="sparkline bar" data-type="bar"></span>
+	</h3>
+</div>
+<form id="member-add-form" name="member-add-form">
+	<div class="card card-block">
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>借用人姓名
+			</label>
+			<div class="col-sm-10">
+				<input id="member-name" type="text" class="form-control boxed" placeholder="" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				<span style="color: red;">*</span>借用人電子信箱
+			</label>
+			<div class="col-sm-10">
+				<input id="member-email" type="email" class="form-control boxed" placeholder="" required>
+				<span class="help-block">範例：abc123@gmail.com</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 form-control-label text-xs-right">
+				備註
+			</label>
+			<div class="col-sm-10">
+				<textarea id="member-memo" rows="5" class="form-control" style="resize: none;"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary btn-block">
+					新增
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

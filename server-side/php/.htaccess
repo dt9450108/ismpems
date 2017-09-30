@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^(.*)/(.*) index.php?router=$1&action=$2 [QSA]
+RewriteRule ^(.*) index.php?router=$1&action= [QSA]

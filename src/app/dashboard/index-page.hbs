@@ -3,36 +3,48 @@ layout: app/app-layout
 pagename: dashboard
 ---
 <section class="section">
-    <div class="row sameheight-container">
-        <div class="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">
+	<div class="row">
+		<div class="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">
+			{{> app/dashboard/items/items}}
+		</div>
+		<div class="col col-12 col-sm-12 col-md-6 col-xl-7">
             {{> app/dashboard/stats/stats}}
-        </div>
-        {{!--<div class="col col-12 col-sm-12 col-md-6 col-xl-7 history-col">
-            {{> app/dashboard/history/history}}
-        </div>--}}
-    </div>
+			<div class="card stats" data-exclude="xs">
+				<div class="card-block">
+					<div class="title-block">
+						<h4 class="title">
+							實驗室室內位置
+						</h4>
+					</div>
+					<div id="dashboard-lab-layout" class="row row-sm stats-container">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
-{{!--<section class="section">
-    <div class="row sameheight-container">
+{{!-- <section class="section">
+	<div class="row">
+		<div class="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">
+			{{> app/dashboard/items/items}}
+		</div>
 
-        <div class="col-xl-8">
-            {{> app/dashboard/items/items}}
-        </div>
 
-        <div class="col-xl-4">
-             {{> app/dashboard/sales-breakdown/sales-breakdown}}
-        </div>
-    </div>
-</section>
+		<div class="col-xl-4">
+			{{> app/dashboard/sales-breakdown/sales-breakdown}}
+		</div>
+	</div>
+</section> --}}
+{{!--
 <section class="section map-tasks">
-    <div class="row sameheight-container">
-        <div class="col-md-8">
-            {{> app/dashboard/sales-by-countries/sales-by-countries}}
-        </div>
+	<div class="row sameheight-container">
+		<div class="col-md-8">
+			{{> app/dashboard/sales-by-countries/sales-by-countries}}
+		</div>
 
-        <div class="col-md-4">
-            {{> app/dashboard/tasks/tasks}}
-        </div>
-    </div>
-</section>--}}
+		<div class="col-md-4">
+			{{> app/dashboard/tasks/tasks}}
+		</div>
+	</div>
+</section> --}}

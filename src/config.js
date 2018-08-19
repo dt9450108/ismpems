@@ -21,14 +21,14 @@ config.validations = {
 	errorElement: "span",
 
 	// add error class
-	highlight: function(element, errorClass, validClass) {
+	highlight: function (element, errorClass, validClass) {
 		$(element).parents("div.form-group")
 			.addClass(errorClass)
 			.removeClass(validClass);
 	},
 
 	// add error class
-	unhighlight: function(element, errorClass, validClass) {
+	unhighlight: function (element, errorClass, validClass) {
 		$(element).parents(".has-error")
 			.removeClass(errorClass)
 			.addClass(validClass);
@@ -65,10 +65,12 @@ function ismpems_init() {
 		data: {},
 		method: "POST",
 		timeout: 1000,
-		error: function(xhr) {
+		error: function (xhr) {
+			console.log('ERROR ===============    ismpems_init    ===============');
+			console.log(xhr);
 			ismpems_alert('Ajax request 發生錯誤');
 		},
-		success: function(response) {
+		success: function (response) {
 			try {
 				var json = $.parseJSON(response);
 				ISMPEMS_CODE = json.ISMPEMS_CODE;
@@ -91,10 +93,12 @@ function ismpems_api_get(router, action, param, callback) {
 		url: ISMPEMS_SERVER_API + router + "/" + action,
 		data: param,
 		method: "POST",
-		error: function(xhr) {
+		error: function (xhr) {
+			console.log('ERROR ===============    ismpems_api_get    ===============');
+			console.log(xhr);
 			ismpems_alert("Ajax request 發生錯誤");
 		},
-		success: function(response) {
+		success: function (response) {
 			try {
 				// ismpems_debug_report("ismpems_api_get", response);
 				var json = $.parseJSON(response);
@@ -121,11 +125,14 @@ function ismpems_alert(text, callback = null, text_content = true) {
 
 function ismpems_confirm(text, confirm_callback = null) {
 	$("#confirm-modal").find(".modal-body > p").text(text);
-	$("#confirm-modal").modal({ keyboard: true, focus: true })
+	$("#confirm-modal").modal({
+		keyboard: true,
+		focus: true
+	})
 	$("#confirm-modal").modal('show');
 	if (confirm_callback != null) {
-		$("#confirm-modal").on('shown.bs.modal', function(e) {
-			$("#confirm-button").off().click(function() {
+		$("#confirm-modal").on('shown.bs.modal', function (e) {
+			$("#confirm-button").off().click(function () {
 				confirm_callback($("#confirm-modal"));
 			});
 		});
@@ -145,9 +152,9 @@ function pad_left(str, num) {
 
 // jquery extend function
 $.extend({
-	redirectPost: function(location, args) {
+	redirectPost: function (location, args) {
 		var form = '';
-		$.each(args, function(key, value) {
+		$.each(args, function (key, value) {
 			value = value.split('"').join('\"')
 			form += '<input type="hidden" name="' + key + '" value="' + value + '">';
 		});

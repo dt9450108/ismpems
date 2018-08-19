@@ -1,19 +1,30 @@
 .dashboard-page .items {
+	.item-progress {
+		height: 2px;
+		margin: 5px 0;
+		color: $color-primary;
+		background-color: #dddddd;
+
+		.progress-bar {
+			background-color: $color-primary;
+		}
+	}
+
 	.item-list {
 
 		// Common case styles
 
 		.item-col-title {
-			flex-grow: 3 * $item-list-col-grow;	
+			flex-grow: 0.5 * $item-list-col-grow;
 		}
 
 		.item-col-date {
-			text-align: right;	
+			text-align: right;
 		}
 
 		@include media-up(xl) {
 			.item-col-date {
-				flex-grow: $item-list-col-grow + 1;	
+				flex-grow: $item-list-col-grow + 1;
 			}
 		}
 
@@ -91,6 +102,21 @@
 
 			.item-col-date {
 				border: none;
+			}
+		}
+	}
+
+	.item {
+		vertical-align: middle;
+		.value {
+
+			@include media-up(xl) {
+				font-size: 1.3vw;
+			}
+		}
+		.name {
+			@include media-up(xl) {
+				font-size: 0.9vw;
 			}
 		}
 	}

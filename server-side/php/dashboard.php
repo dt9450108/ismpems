@@ -1,5 +1,25 @@
 <?php
 switch ($Action) {
+    case 'kindstat':
+        $res = mysql_query("SELECT `device`.`d_type` AS `type`, `device_type`.`dt_text` AS `text`, COUNT(`device`.`d_type`) AS `count` FROM `device` LEFT JOIN `device_type` ON `device_type`.`dt_type` = `device`.`d_type` GROUP BY `device`.`d_type` ORDER BY `device`.`d_type` ASC");
+        $res_count = mysql_num_rows($res);
+        $total_count = 0;
+
+        $kind_stat = [];
+        while ($row = mysql_fetch_array($res)) {
+            $total_count += $row['count'];
+            $kind_stat[] = [
+                'type' => $row['type'],
+                'text' => $row['text'],
+                'count' => $row['count'],
+            ];
+        }
+
+        API_Result(ISMPEMS_CODE_OK, "OK", "設備種類統計", [
+            'total' => $total_count,
+            'stat' => $kind_stat
+        ]);
+        break;
     case 'stat':
         $res = mysql_query("SELECT * FROM `device`");
         $total_devices_num = mysql_num_rows($res);

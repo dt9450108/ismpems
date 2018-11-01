@@ -80,7 +80,7 @@ $(function() {
 			select: true,
 			pagingType: "full_numbers",
 			order: [
-				[4, "desc"]
+				[5, "desc"]
 			],
 			columnDefs: [
 				{ width: "15%", targets: 2 }

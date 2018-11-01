@@ -19,7 +19,10 @@ $(function() {
             language: {
                 url: ISMPEMS_SERVER_ROUTE + "js/Chinese-traditional.json"
             },
-            pagingType: "full_numbers"
+            pagingType: "full_numbers",
+			order: [
+				[5, "desc"]
+			],
         });
     }
 });

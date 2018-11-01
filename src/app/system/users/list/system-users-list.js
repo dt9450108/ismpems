@@ -21,7 +21,7 @@ $(function() {
             },
             pagingType: "full_numbers",
 			order: [
-				[5, "desc"]
+				[3, "desc"]
 			],
         });
     }

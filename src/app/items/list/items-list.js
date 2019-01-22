@@ -128,9 +128,11 @@ $(function() {
 			} else if (data.status === "2") {
 				$("#device-returning-button").prop("disabled", false);
 			}
+			$("#device-copy-add-button").prop("disabled", false);
 		}).on('deselect', function(e, dt, type, indexes) {
 			$("#device-edit-button").prop("disabled", true);
 			$("#device-lending-button").prop("disabled", true);
+			$("#device-copy-add-button").prop("disabled", true);
 		});
 		$("#device-edit-button").click(function() {
 			var rowData = table.rows(".selected").data().toArray()[0];
@@ -143,6 +145,10 @@ $(function() {
 		$("#device-returning-button").click(function() {
 			var rowData = table.rows(".selected").data().toArray()[0];
 			$.redirectPost(ISMPEMS_SERVER_ROUTE + "lend-return.html", { type: rowData.type, num: rowData.num, redirect: "1" });
+		});
+		$("#device-copy-add-button").click(function() {
+			var rowData = table.rows(".selected").data().toArray()[0];
+			$.redirectPost(ISMPEMS_SERVER_ROUTE + "item-adder.html", { type: rowData.type, num: rowData.num, redirect: "1" });
 		});
 	}
 });

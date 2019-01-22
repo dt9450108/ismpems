@@ -11,10 +11,15 @@ pagename: lend-list
 					設備借用記錄
 					<a href="lend-adder.html" class="btn btn-primary btn-sm rounded-s">
 						新增
-					</a><!--
+					</a>
+					<!--
 					--><button type="button" id="lend-edit-button" class="btn btn-warning btn-sm rounded-s" disabled="disabled">
 						歸還設備
 					</button><!--
+					--><button type="button" id="lend-device-edit-button" class="btn btn-info btn-sm rounded-s" disabled="disabled">
+						編輯設備
+					</button>
+					<!--
 				 -->{{!-- <a href="#" data-toggle="modal" data-target="#confirm-modal" class="btn btn-danger btn-sm rounded-s">
 						刪除
 					</a> --}}
@@ -54,6 +59,29 @@ pagename: lend-list
 			<select id="member-select" class="c-select form-control boxed">
 				<option value="">全部</option>
 			</select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 form-control-label text-xs-right">
+			借用狀態
+		</label>
+		<div class="col-sm-4">
+			<label>
+				<input class="radio" name="lent-status-radio" type="radio" value="all" checked="checked">
+				<span>全部</span>
+			</label>
+			<label>
+				<input class="radio" name="lent-status-radio" type="radio" value="back">
+				<span>已歸還</span>
+			</label>
+			<label>
+				<input class="radio" name="lent-status-radio" type="radio" value="lent">
+				<span>未歸還</span>
+			</label>
+		</div>
+		<label class="col-sm-2 form-control-label text-xs-right">
+		</label>
+		<div class="col-sm-4">
 		</div>
 	</div>
 </div>

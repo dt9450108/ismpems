@@ -407,6 +407,54 @@ switch ($Action) {
             API_Result(ISMPEMS_CODE_NO_CONTENT, "No Content", "No information of used location data", []);
         }
         break;
+    case 'copyadd':
+        if (isset($_POST['type']) && isset($_POST['num'])) {
+            $type = $_POST['type'];
+            $num = $_POST['num'];
+
+            // get the copied device data
+            $sql = sprintf("SELECT * FROM `device` WHERE `d_type` = '%s' AND `d_num` = %s", $type, $num);
+            $res = mysql_query($sql);
+            $num = mysql_num_rows($res);
+            $device = [];
+            if ($num > 0) {
+                $row = mysql_fetch_array($res);
+                // `d_type`, `d_num`, `d_real_name`, `d_location`, `d_status`, `d_ncku_property_num`, `d_ncku_num`, `d_ncku_serial_num`, `d_ncku_price_name`, `d_brand`, `d_serial_num`, `d_duration`, `d_buy_from`, `d_buy_date`, `d_price`, `d_spec`, `d_memo`, `d_last_modified_datetime`
+                $device = [
+                    'type' => $row['d_type'],
+                    'name' => $row['d_real_name'],
+                    'location' => $row['d_location'],
+                    'brand' => $row['d_brand'],
+                    'buy_from' => $row['d_buy_from'],
+                    'buy_date' => $row['d_buy_date'],
+                    'price' => $row['d_price'],
+                    'spec' => $row['d_spec'],
+                    'memo' => $row['d_memo'],
+                ];
+            } else {
+                API_Result(ISMPEMS_CODE_NO_CONTENT, "No Content", "No information of the device", []);
+            }
+
+            $numState = [];
+            $sql = sprintf("SELECT `d_type`, `d_num` FROM `device` WHERE `d_type` = '%s' ORDER BY `d_num` DESC LIMIT 1", $type);
+            $res = mysql_query($sql);
+            $num = mysql_num_rows($res);
+            if ($num == 0) {
+                $numState = ["last" => 0, "next" => 1];
+            } else {
+                $row = mysql_fetch_array($res);
+                $nextNum = intval($row['d_num']) + 1;
+                $numState = ["last" => $row['d_num'], "next" => $nextNum];
+            }
+
+            API_Result(ISMPEMS_CODE_OK, "OK", "Success to get the device information", [
+                'device' => $device,
+                'num_state' => $numState,
+            ]);
+        } else {
+            API_Result(ISMPEMS_CODE_BAD_REQUEST, "Bad Request", "系統資訊錯誤");
+        }
+        break;
     default:
         header('Location: ' . ISMPEMS_SERVER . "error-404-alt.html");
 }

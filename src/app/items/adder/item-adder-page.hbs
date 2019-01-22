@@ -19,6 +19,9 @@ device_duration:
 	</h3>
 </div>
 <form id="device-adder-form" name="device-adder-form">
+	<input type="hidden" id="item-adder-redirect-tag" value="<?php echo ((isset($_POST['redirect']) && !empty($_POST['redirect'])) ? $_POST['redirect'] : '0') ?>"></input>
+	<input type="hidden" id="item-copy-type" value="<?php echo ((isset($_POST['type']) && !empty($_POST['type'])) ? $_POST['type'] : '') ?>"></input>
+	<input type="hidden" id="item-copy-num" value="<?php echo ((isset($_POST['num']) && !empty($_POST['num'])) ? $_POST['num'] : '') ?>"></input>
 	<div class="card card-block">
 		<div class="form-group row">
 			<label class="col-sm-2 form-control-label text-xs-right">

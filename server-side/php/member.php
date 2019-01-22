@@ -14,7 +14,18 @@ switch ($Action) {
         if (!empty($_POST['member'])) {
             $member_clause = sprintf(" AND `lend_record`.`lr_fm_id` = %s", $_POST['member']);
         }
-        $res = mysql_query("SELECT `lend_record`.`lr_id`, `lend_record`.`lr_fd_type`, `lend_record`.`lr_fd_num`, `lend_record`.`lr_fm_id`, `lend_record`.`lr_before_location`, `lend_record`.`lr_lend_datetime`, `lend_record`.`lr_return_datetime`, `lend_record`.`lr_f_lend_handler`, `lend_record`.`lr_f_return_handler`, `lend_record`.`lr_memo`, `member`.`m_name` AS `lender_name`, `system_user_t1`.`su_name` AS `lend_handler`, `system_user_t2`.`su_name` AS `return_handler`, `device`.`d_real_name` FROM `lend_record` LEFT JOIN `member` ON `lend_record`.`lr_fm_id` = `member`.`m_id` LEFT JOIN `system_user` AS `system_user_t1` ON `lend_record`.`lr_f_lend_handler` = `system_user_t1`.`su_account` LEFT JOIN `system_user` AS `system_user_t2` ON `lend_record`.`lr_f_return_handler` = `system_user_t2`.`su_account` LEFT JOIN `device` ON `device`.`d_type` = `lend_record`.`lr_fd_type` AND `device`.`d_num` = `lend_record`.`lr_fd_num` WHERE 1 $type_clause $member_clause");
+        $status_clause = "";
+        switch ($_POST['status']) {
+            case 'back':
+                $status_clause = " AND `lend_record`.`lr_return_datetime` IS NOT NULL";
+                break;
+            case 'lent':
+                $status_clause = " AND `lend_record`.`lr_return_datetime` IS NULL";
+                break;
+            default:
+        }
+
+        $res = mysql_query("SELECT `lend_record`.`lr_id`, `lend_record`.`lr_fd_type`, `lend_record`.`lr_fd_num`, `lend_record`.`lr_fm_id`, `lend_record`.`lr_before_location`, `lend_record`.`lr_lend_datetime`, `lend_record`.`lr_return_datetime`, `lend_record`.`lr_f_lend_handler`, `lend_record`.`lr_f_return_handler`, `lend_record`.`lr_memo`, `member`.`m_name` AS `lender_name`, `system_user_t1`.`su_name` AS `lend_handler`, `system_user_t2`.`su_name` AS `return_handler`, `device`.`d_real_name` FROM `lend_record` LEFT JOIN `member` ON `lend_record`.`lr_fm_id` = `member`.`m_id` LEFT JOIN `system_user` AS `system_user_t1` ON `lend_record`.`lr_f_lend_handler` = `system_user_t1`.`su_account` LEFT JOIN `system_user` AS `system_user_t2` ON `lend_record`.`lr_f_return_handler` = `system_user_t2`.`su_account` LEFT JOIN `device` ON `device`.`d_type` = `lend_record`.`lr_fd_type` AND `device`.`d_num` = `lend_record`.`lr_fd_num` WHERE 1 $type_clause $member_clause $status_clause");
         $num = mysql_num_rows($res);
         if ($num == 0) {
             API_Result(ISMPEMS_CODE_NO_CONTENT, "No Content", "沒有任何借用記錄", []);
